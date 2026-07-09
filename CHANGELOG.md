@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.9.8 - 2026-07-09
+
+- 修复登录完成跳转后 Network 面板出现 `/api/user/config` 和 `/api/user/sync` 两个 400 请求的问题。
+- `AutoSync` 改为在 `PasswordGate` 确认服务端 session 并放行页面内容后再挂载，避免本地旧 session 早于服务端 cookie 校验触发云同步。
+- 用户配置和云同步 API 在未认证时返回 `401 Authentication required`，不再使用 `400 Missing profileId` 表达会话缺失。
+- 新增未认证响应回归测试，锁定受保护同步接口的状态码语义。
+
 ## 4.9.7 - 2026-07-09
 
 - 修复 Android TV / 小米电视旧 WebView 83 打开站点后白屏的问题。

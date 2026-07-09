@@ -116,8 +116,6 @@ export default async function RootLayout({
                 scriptUrl={videoTogetherScriptUrl}
                 settingUrl={videoTogetherSettingUrl}
               />
-              {/* 加入自动同步组件，它会在后台默默工作，我们放在 ThemeProvider 内部的最前面 */}
-              <AutoSync />
               <LocaleProvider />
 
               <TVProvider>
@@ -132,6 +130,7 @@ export default async function RootLayout({
                     process.env.UPSTASH_REDIS_REST_TOKEN
                   )
                 )}>
+                  <AutoSync />
                   <AdKeywordsWrapper />
                   {children}
                   <BackToTop />

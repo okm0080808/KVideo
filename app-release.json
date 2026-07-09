@@ -4,8 +4,18 @@
     "name": "KVideo",
     "branch": "main"
   },
-  "currentVersion": "4.9.7",
+  "currentVersion": "4.9.8",
   "releases": [
+    {
+      "version": "4.9.8",
+      "publishedAt": "2026-07-09",
+      "title": "修复登录后同步接口 400",
+      "notes": [
+        "自动同步组件现在只会在访问密码 gate 确认服务端会话并完成本地 session 镜像后挂载，避免登录跳转阶段提前请求 /api/user/config 与 /api/user/sync。",
+        "用户配置和云同步 API 在没有有效服务端 session 时改为返回 401 Authentication required，不再把未认证状态伪装成 Missing profileId 的 400。",
+        "新增未认证响应回归测试，防止受保护同步接口的状态码语义再次退化。"
+      ]
+    },
     {
       "version": "4.9.7",
       "publishedAt": "2026-07-09",
